@@ -1,7 +1,7 @@
 {
-  "name": "fluxgear-project-common",
+  "name": "fluxgear-bind-dispatch",
   "version": "0.1.0",
-  "description": "Common files for all fluxgear module projects",
+  "description": "Bind properties to dispatch events",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -s -d lib src",
@@ -31,6 +31,8 @@
     "eslint-plugin-jsx-a11y": "^1.4.2",
     "eslint-plugin-react": "^5.1.1",
     "mocha": "^2.5.3",
-    "must": "^0.13.1"
+    "must": "^0.13.1",
+    "must-sinon": "0.0.0",
+    "sinon": "^1.17.4"
   }
 }
