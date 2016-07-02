@@ -1,7 +1,7 @@
 {
   "name": "fluxgear-bind-dispatch",
   "version": "0.1.0",
-  "description": "Bind properties to dispatch events",
+  "description": "[FluxGear] Bind properties to dispatch events",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -s -d lib src",
