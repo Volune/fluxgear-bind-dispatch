@@ -5,10 +5,18 @@ function toEvents() {
   const events = {};
   for (const eventName of Object.keys(eventDefinitions)) {
     const message = toMessage.call(eventName);
-    const create = eventDefinitions[eventName];
-    if (create && typeof create === 'function') {
+    const definition = eventDefinitions[eventName];
+    if (definition && typeof definition === 'function') {
       Object.defineProperty(message, 'create', {
-        value: create,
+        value: definition,
+      });
+    } else if (definition && typeof definition === 'object') {
+      Object.keys(definition).forEach(key => {
+        if (typeof message[key] === 'undefined') {
+          Object.defineProperty(message, key, {
+            value: definition[key],
+          });
+        }
       });
     }
     events[eventName] = message;
@@ -51,5 +59,11 @@ function bindDispatch() {
   };
 }
 
-export { toEvents, bindDispatch };
+function fromDomEvent(key, domElementKey = 'value') {
+  return ([domEvent]) => ({
+    [key]: domEvent.currentTarget[domElementKey],
+  });
+}
+
+export { toEvents, bindDispatch, fromDomEvent };
 export default bindDispatch;
